@@ -1,69 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-	
-<!--Ads-->
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'd5932d3bc86ba41b33e0a09bb2032930',
-		'format' : 'iframe',
-		'height' : 50,
-		'width' : 320,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//gateperfectly.com/d5932d3bc86ba41b33e0a09bb2032930/invoke.js"></script>
-<script type="text/javascript">
-	atOptions = {
-		'key' : '10971da18ac507768271eabdca133a3e',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//gateperfectly.com/10971da18ac507768271eabdca133a3e/invoke.js"></script>
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'fd7ba95d10fa38c33de3efc7303fb57d',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//gateperfectly.com/fd7ba95d10fa38c33de3efc7303fb57d/invoke.js"></script>
-<script type='text/javascript' src='//gateperfectly.com/f0/d0/08/f0d008b8f381c8327861ee8914aeff7f.js'></script>
-<!--Ads-->
-<a href="intent://yourwebsite.com#Intent;package=com.android.chrome;scheme=https;end">
-  Buka di browser
-</a>
-
-	
-	
-<meta http-equiv="refresh" content="100;https://wa.me/085863234050">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VIPBOX</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <title>Buka di Browser Eksternal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 20px;
+      font-size: 16px;
+      margin-top: 20px;
+      background-color: #4285F4;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+  </style>
 </head>
 <body>
-    <div class="loader-wrapper">
-        <div class="loader"></div>
-    </div>
-    <script src="js/script.js"></script>
-	
+  <h2>Buka Website di Browser Eksternal</h2>
+  <p>Untuk pengalaman terbaik, silakan buka halaman ini di browser seperti Chrome atau Safari.</p>
+
+  <a id="openBtn" class="btn" href="#">Buka di Chrome / Safari</a>
+
+  <script>
+    const ua = navigator.userAgent;
+    const openBtn = document.getElementById("openBtn");
+    const redirectURL = "https://yourwebsite.com"; // Ganti dengan URL tujuan kamu
+
+    if (ua.includes("FBAN") || ua.includes("FBAV")) {
+      // Jika dari aplikasi Facebook
+      if (/Android/i.test(ua)) {
+        // Android - pakai intent
+        openBtn.href = `intent://${redirectURL.replace("https://", "").replace("http://", "")}#Intent;package=com.android.chrome;scheme=https;end`;
+      } else if (/iPhone|iPad|iPod/i.test(ua)) {
+        // iOS - beri instruksi manual
+        openBtn.href = redirectURL;
+        openBtn.innerText = "Tekan lalu pilih 'Buka di Safari'";
+      }
+    } else {
+      // Bukan dari app FB, langsung redirect
+      window.location.href = redirectURL;
+    }
+  </script>
 </body>
-   <!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4845805,4,0,0,0,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4845805&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
 </html>
