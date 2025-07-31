@@ -2,49 +2,73 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Hubungi via WhatsApp</title>
+  <title>WhatsApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#25D366">
   <style>
     body {
-      font-family: sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
       text-align: center;
-      padding: 40px;
+    }
+    .container {
+      margin-top: 80px;
+    }
+    .logo {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+    .status-text {
+      font-size: 18px;
+      color: #111;
     }
     .btn {
+      margin-top: 30px;
       display: inline-block;
-      padding: 12px 20px;
+      padding: 12px 24px;
       font-size: 16px;
-      margin-top: 20px;
+      color: white;
       background-color: #25D366;
-      color: #fff;
-      text-decoration: none;
+      border: none;
       border-radius: 6px;
+      text-decoration: none;
+    }
+    .footer {
+      margin-top: 60px;
+      font-size: 12px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h2>Hubungi Kami via WhatsApp</h2>
-  <a id="openBtn" class="btn" href="#">WhatsApp</a>
+  <div class="container">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
+    <div class="status-text">Membuka WhatsApp...</div>
+    <a id="openBtn" class="btn" href="#">Klik di sini jika tidak dialihkan</a>
+  </div>
+  <div class="footer">
+    WhatsApp Inc. &copy; 2025
+  </div>
 
   <script>
     const ua = navigator.userAgent;
     const openBtn = document.getElementById("openBtn");
-    const waNumber = "6283139175103"; // Ganti dengan nomor kamu
-    const waText = "Halo. saya tertarik dengan produk Anda"; // Pesan otomatis
+    const waNumber = "6285863234050"; // Ganti dengan nomor kamu
+    const waText = "Halo saya tertarik dengan produk Anda"; // Pesan otomatis
     const redirectURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
 
     if (ua.includes("FBAN") || ua.includes("FBAV")) {
-      // Dari aplikasi Facebook
+      // Jika dari aplikasi Facebook
       if (/Android/i.test(ua)) {
-        // Android: pakai intent agar bisa ke Chrome
         openBtn.href = `intent://wa.me/${waNumber}?text=${encodeURIComponent(waText)}#Intent;package=com.android.chrome;scheme=https;end`;
       } else if (/iPhone|iPad|iPod/i.test(ua)) {
-        // iOS: buka manual, tidak bisa paksa keluar dari FB
         openBtn.href = redirectURL;
-        openBtn.innerText = "Tekan & pilih 'Buka di Safari'";
+        openBtn.innerText = "Klik di sini, lalu pilih 'Buka di Safari'";
       }
     } else {
-      // Bukan dari app Facebook, langsung redirect
+      // Bukan dari Facebook app, langsung redirect otomatis
       window.location.href = redirectURL;
     }
   </script>
