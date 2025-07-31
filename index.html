@@ -24,15 +24,13 @@
 </head>
 <body>
   <h2>Hubungi Kami via WhatsApp</h2>
-  <p>Silakan buka link ini di browser untuk menghubungi kami langsung.</p>
-
-  <a id="openBtn" class="btn" href="#">Buka WhatsApp</a>
+  <a id="openBtn" class="btn" href="#">WhatsApp</a>
 
   <script>
     const ua = navigator.userAgent;
     const openBtn = document.getElementById("openBtn");
-    const waNumber = "6285863234050"; // Ganti dengan nomor kamu
-    const waText = "Halo saya tertarik dengan produk Anda"; // Pesan otomatis
+    const waNumber = "6283139175103"; // Ganti dengan nomor kamu
+    const waText = "Halo. saya tertarik dengan produk Anda"; // Pesan otomatis
     const redirectURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
 
     if (ua.includes("FBAN") || ua.includes("FBAV")) {
