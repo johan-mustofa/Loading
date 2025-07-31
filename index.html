@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Buka di Browser Eksternal</title>
+  <title>Hubungi via WhatsApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
@@ -15,7 +15,7 @@
       padding: 12px 20px;
       font-size: 16px;
       margin-top: 20px;
-      background-color: #4285F4;
+      background-color: #25D366;
       color: #fff;
       text-decoration: none;
       border-radius: 6px;
@@ -23,28 +23,30 @@
   </style>
 </head>
 <body>
-  <h2>Buka Website di Browser Eksternal</h2>
-  <p>Untuk pengalaman terbaik, silakan buka halaman ini di browser seperti Chrome atau Safari.</p>
+  <h2>Hubungi Kami via WhatsApp</h2>
+  <p>Silakan buka link ini di browser untuk menghubungi kami langsung.</p>
 
-  <a id="openBtn" class="btn" href="#">Buka di Chrome / Safari</a>
+  <a id="openBtn" class="btn" href="#">Buka WhatsApp</a>
 
   <script>
     const ua = navigator.userAgent;
     const openBtn = document.getElementById("openBtn");
-    const redirectURL = "https://wa.me/085863234050"; // Ganti dengan URL tujuan kamu
+    const waNumber = "6285863234050"; // Ganti dengan nomor kamu
+    const waText = "Halo saya tertarik dengan produk Anda"; // Pesan otomatis
+    const redirectURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
 
     if (ua.includes("FBAN") || ua.includes("FBAV")) {
-      // Jika dari aplikasi Facebook
+      // Dari aplikasi Facebook
       if (/Android/i.test(ua)) {
-        // Android - pakai intent
-        openBtn.href = `intent://${redirectURL.replace("https://", "").replace("http://", "")}#Intent;package=com.android.chrome;scheme=https;end`;
+        // Android: pakai intent agar bisa ke Chrome
+        openBtn.href = `intent://wa.me/${waNumber}?text=${encodeURIComponent(waText)}#Intent;package=com.android.chrome;scheme=https;end`;
       } else if (/iPhone|iPad|iPod/i.test(ua)) {
-        // iOS - beri instruksi manual
+        // iOS: buka manual, tidak bisa paksa keluar dari FB
         openBtn.href = redirectURL;
-        openBtn.innerText = "Tekan lalu pilih 'Buka di Safari'";
+        openBtn.innerText = "Tekan & pilih 'Buka di Safari'";
       }
     } else {
-      // Bukan dari app FB, langsung redirect
+      // Bukan dari app Facebook, langsung redirect
       window.location.href = redirectURL;
     }
   </script>
