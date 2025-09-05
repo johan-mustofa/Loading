@@ -2,88 +2,78 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>WhatsApp</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#25D366">
+  <title>Landing Page Loading</title>
   <style>
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
+    * {
       margin: 0;
       padding: 0;
-      text-align: center;
+      box-sizing: border-box;
     }
-    .container {
-      margin-top: 80px;
+    body, html {
+      height: 100%;
+      font-family: Arial, sans-serif;
     }
-    .logo {
-      width: 80px;
-      margin-bottom: 20px;
-    }
-    .status-text {
-      font-size: 18px;
-      color: #111;
-    }
-    .btn {
-      margin-top: 30px;
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 16px;
+
+    /* Fullscreen loading */
+    #loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #0f172a;
       color: white;
-      background-color: #25D366;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 9999;
     }
-    .footer {
-      margin-top: 60px;
-      font-size: 12px;
-      color: #888;
+
+    .spinner {
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-top: 5px solid #38bdf8;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Konten utama */
+    #content {
+      display: none;
+      padding: 40px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Logo">
-    <div class="status-text">Membuka WhatsApp...</div>
-    <a id="openBtn" class="btn" href="#">Klik di sini jika tidak dialihkan</a>
+  <!-- Loading Screen -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <h2>Loading...</h2>
   </div>
-  <div class="footer">
-    WhatsApp Inc. &copy; 2025
+
+  <!-- Halaman Utama -->
+  <div id="content">
+    <h1>Selamat Datang di Website Kami 🎉</h1>
+    <p>Ini adalah halaman utama setelah loading selesai.</p>
   </div>
 
   <script>
-    const ua = navigator.userAgent;
-    const openBtn = document.getElementById("openBtn");
-    const waNumber = "6281284344329"; // Ganti dengan nomor kamu
-    const waText = "Halo saya tertarik dengan produk Anda"; // Pesan otomatis
-    const redirectURL = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
-
-    if (ua.includes("FBAN") || ua.includes("FBAV")) {
-      // Jika dari aplikasi Facebook
-      if (/Android/i.test(ua)) {
-        openBtn.href = `intent://wa.me/${waNumber}?text=${encodeURIComponent(waText)}#Intent;package=com.android.chrome;scheme=https;end`;
-      } else if (/iPhone|iPad|iPod/i.test(ua)) {
-        openBtn.href = redirectURL;
-        openBtn.innerText = "Klik di sini, lalu pilih 'Buka di Safari'";
-      }
-    } else {
-      // Bukan dari Facebook app, langsung redirect otomatis
-      window.location.href = redirectURL;
-    }
+    // Simulasi loading selama 3 detik
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      }, 3000); // 3000ms = 3 detik
+    });
   </script>
 </body>
 </html>
-   <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4845805,4,511,95,18,00000000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4845805&101" alt="free geoip" border="0"></a></noscript>
-<!-- Histats.com  END  -->
